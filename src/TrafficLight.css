@@ -1,0 +1,57 @@
+.wrapper {
+  text-align: center;
+  margin-top: 40px;
+  font-family: sans-serif;
+}
+
+.sviesoforas {
+  width: 80px;
+  margin: 30px auto;
+  padding: 15px;
+  background-color: #b7e2f7;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.lempute {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0.2;
+  transition: all 0.3s ease;
+  margin: auto;
+}
+
+.lempute.aktyvi {
+  opacity: 1;
+  box-shadow: 0 0 20px 5px currentColor;
+}
+
+.lempute.red {
+  background-color: red;
+}
+
+.lempute.green {
+  background-color: rgb(3, 202, 3);
+}
+
+.lempute.yellow {
+  background-color: yellow;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #a57d7d;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #666;
+}
