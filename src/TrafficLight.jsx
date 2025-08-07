@@ -1,30 +1,41 @@
-import React, { useState } from 'react';
-import './TrafficLight.css'; // <- svarbu
+import React, { useState, useEffect } from 'react';
+import './TrafficLight.css';
 
 export default function TrafficLight() {
-  const [color, setColor] = useState('red');
-  const colors = ['red', 'green', 'yellow'];
+  const spalvos = ['red', 'yellow', 'green'];
+  const [colorIndex, setColorIndex] = useState(0);
+  const [laikas, setLaikas] = useState(5); 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLaikas((prev) => {
+        if (prev === 1) {
+          ``
+          setColorIndex((index) => (index + 1) % spalvos.length);
+          return 5; // naujas laikas
+        }
+        return prev - 1;
+      });
+    }, 1000); // = 1 sekundė
 
-  const keistiSpalva = () => {
-    const index = colors.indexOf(color);
-    const next = (index + 1) % colors.length;
-    setColor(colors[next]);
-  };
+    return () => clearInterval(timer); 
+  }, []);
+
+  const aktyviSpalva = spalvos[colorIndex];
 
   return (
     <div className="wrapper">
-      <h2>---Šviesoforas---</h2>
+      <h2>🚦 Automatinis šviesoforas</h2>
 
       <div className="sviesoforas">
-        {colors.map((spalva) => (
+        {spalvos.map((spalva) => (
           <div
             key={spalva}
-            className={`lempute ${spalva} ${color === spalva ? 'aktyvi' : ''}`}
+            className={`lempute ${spalva} ${aktyviSpalva === spalva ? 'aktyvi' : ''}`}
           ></div>
         ))}
       </div>
 
-      <button onClick={keistiSpalva}> ---Keisti spalvą---</button>
+      <p>⏱️ Keisis už: <strong>{laikas}</strong> s</p>
     </div>
   );
 }
